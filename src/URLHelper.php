@@ -7,9 +7,10 @@ if (!function_exists('link_to')) {
      * @param string $body The text to display
      * @param string $url The destination href
      * @param array  $options Options for the link, passed as ["name" => "data"] to name="data"
+     * @return string A completed tag
      */
-    function link_to(string $body, string $url, array $options = []) {
-        tag("a", $body, array_merge(["href" => $url], $options));
+    function link_to(string $body, string $url, array $options = []): string {
+        return tag("a", $body, array_merge(["href" => $url], $options));
     }
 }
 
@@ -21,9 +22,10 @@ if (!function_exists('mail_to')) {
      * @param string      $email The destination email
      * @param string|null $body The text to display, or null to use $email
      * @param array       $options Options for the link, passed as ["name" => "data"] to name="data"
+     * @return string A completed tag
      */
-    function mail_to(string $email, string $body = null, array $options = []) {
-        tag("a", $body ?? $email, array_merge(["href" => "mailto:$email"], $options));
+    function mail_to(string $email, string $body = null, array $options = []): string {
+        return tag("a", $body ?? $email, array_merge(["href" => "mailto:$email"], $options));
     }
 }
 
@@ -35,9 +37,10 @@ if (!function_exists('phone_to')) {
      * @param string      $number The destination number
      * @param string|null $body The text to display, or null to use $number
      * @param array       $options Options for the link, passed as ["name" => "data"] to name="data"
+     * @return string A completed tag
      */
-    function phone_to(string $number, string $body = null, array $options = []) {
-        tag("a", $body ?? $number, array_merge(["href" => "tel:$number"], $options));
+    function phone_to(string $number, string $body = null, array $options = []): string {
+        return tag("a", $body ?? $number, array_merge(["href" => "tel:$number"], $options));
     }
 }
 
@@ -49,8 +52,9 @@ if (!function_exists('sms_to')) {
      * @param string      $number The destination number
      * @param string|null $body The text to display, or null to use $number
      * @param array       $options Options for the link, passed as ["name" => "data"] to name="data"
+     * @return string A completed tag
      */
-    function sms_to(string $number, string $body = null, array $options = []) {
-        tag("a", $body ?? $number, array_merge(["href" => "sms:$number"], $options));
+    function sms_to(string $number, string $body = null, array $options = []): string {
+        return tag("a", $body ?? $number, array_merge(["href" => "sms:$number"], $options));
     }
 }
