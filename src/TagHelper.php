@@ -18,6 +18,7 @@ if (!function_exists('tag')) {
         foreach ($options as $name => $value) {
             array_push($data, "$name=\"$value\"");
         }
+        $data = join(" ", $data);
 
         if (in_array($tag, $voidElements)) {
             return "<$tag $data />";
