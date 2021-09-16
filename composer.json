@@ -1,0 +1,18 @@
+{
+    "name": "chew/rails-helpers",
+    "description": "A collection of Rails-esque helper functions for use in your PHP project.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Chew\\RailsHelpers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Chew",
+            "email": "chew@chew.pw"
+        }
+    ],
+    "require": {}
+}
