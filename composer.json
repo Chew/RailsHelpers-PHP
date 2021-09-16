@@ -6,7 +6,11 @@
     "autoload": {
         "psr-4": {
             "Chew\\RailsHelpers\\": "src/"
-        }
+        },
+        "files": [
+            "src/TagHelper.php",
+            "src/URLHelper.php"
+        ]
     },
     "authors": [
         {
