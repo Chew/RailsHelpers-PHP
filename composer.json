@@ -1,11 +1,11 @@
 {
-    "name": "chew/rails-helpers",
+    "name": "memerator/rails-helpers",
     "description": "A collection of Rails-esque helper functions for use in your PHP project.",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Chew\\RailsHelpers\\": "src/"
+            "Memerator\\RailsHelpers\\": "src/"
         },
         "files": [
             "src/TagHelper.php",
@@ -14,8 +14,8 @@
     },
     "authors": [
         {
-            "name": "Chew",
-            "email": "chew@chew.pw"
+            "name": "Memerator",
+            "email": "help@memerator.me"
         }
     ],
     "require": {}
