@@ -13,7 +13,7 @@ In your `composer.json`, add this:
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/Chew/RailsHelpers-PHP.git"
+      "url": "https://github.com/Memerator/RailsHelpers-PHP.git"
     }
   ]
 }
@@ -24,12 +24,12 @@ Then add the dependency:
 ```json
 {
   "require": {
-    "chew/rails-helpers": "dev-main"
+    "memerator/rails-helpers": "dev-main"
   }
 }
 ```
 
-Finally, `composer update` (or `composer update chew/rails-helpers`)
+Finally, `composer update` (or `composer update memerator/rails-helpers`)
 
 ## Using
 
