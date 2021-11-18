@@ -58,3 +58,66 @@ if (!function_exists('sms_to')) {
         return tag("a", $body ?? $number, array_merge(["href" => "sms:$number"], $options));
     }
 }
+
+if (!function_exists('button_to')) {
+    /**
+     * Generates a form containing a single button that submits to the URL created by the set of options.
+     *
+     * @param string $name The text to display
+     * @param string $href The destination URL
+     * @param array  $options These are the options ot pass to the button. However, there are some exceptions:<br>
+     *                        - method: If you pass "get" or "post" as the method, it will be used as the method
+     *                          for the form. If you don't, the method will be "post".<br>
+     *                        - disabled: If you pass true, the button will be disabled.<br>
+     *                        - form: Passing things into form will modify the form's options, not the button's.<br>
+     *                        - form_class: Modifies the form's class, not the button's.<br>
+     *                        - params: If you pass an array of parameters, they will be added to the form as hidden.
+     * @return string A completed tag
+     */
+    function button_to(string $name, string $href, array $options = []): string {
+        $formOptions = [];
+        // Take method from the $options and add it to $formOptions
+        if (isset($options["method"])) {
+            $formOptions["method"] = $options["method"];
+            unset($options["method"]);
+        } else {
+            $formOptions["method"] = "post";
+        }
+
+        // Downcase the method
+        $formOptions["method"] = strtolower($formOptions["method"]);
+
+        // Ensure method is either Get or Post, otherwise throw an IllegalArgumentException
+        if ($formOptions["method"] !== "get" && $formOptions["method"] !== "post") {
+            throw new InvalidArgumentException("Method must be either 'get' or 'post'");
+        }
+
+        // Take any options from $options["form"] and add them to $formOptions
+        if (isset($options["form"])) {
+            $formOptions = array_merge($formOptions, $options["form"]);
+            unset($options["form"]);
+        }
+
+        // Set the form's class option to $options["form_class"] then remove it from $options
+        if (isset($options["form_class"])) {
+            $formOptions["class"] = $options["form_class"];
+            unset($options["form_class"]);
+        }
+
+        $fields = [];
+        // iterate over each parameter and add it as a hidden input
+        if (isset($options["params"])) {
+            foreach ($options["params"] as $key => $value) {
+                $fields[] = tag("input", null, ["type" => "hidden", "name" => $key, "value" => $value]);
+            }
+            unset($options["params"]);
+        }
+
+        // Set the form action to the $href
+        $formOptions["action"] = $href;
+
+        $button = tag("input", null, array_merge(["type" => "submit", "value" => $name], $options));
+
+        return tag("form", $button . implode("", $fields), $formOptions);
+    }
+}
