@@ -4,12 +4,12 @@ if (!function_exists('link_to')) {
     /**
      * Creates a link to a specific page.
      *
-     * @param string $body The text to display
-     * @param string $url The destination href
-     * @param array  $options Options for the link, passed as ["name" => "data"] to name="data"
+     * @param string|null $body The text to display, or null to display nothing
+     * @param string      $url The destination href
+     * @param array       $options Options for the link, passed as ["name" => "data"] to name="data"
      * @return string A completed tag
      */
-    function link_to(string $body, string $url, array $options = []): string {
+    function link_to(?string $body, string $url, array $options = []): string {
         return tag("a", $body, array_merge(["href" => $url], $options));
     }
 }
